@@ -3,9 +3,12 @@
 \usepackage{hyperref}
 \usepackage{times}
 \usepackage{graphicx}
+\usepackage{amsmath}
 \graphicspath{ {./} }
 \usepackage[toc,page]{appendix}
 \usepackage{pgffor}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
 
 \title{Exploration of jet substructure with \\ Energy Flow Polynomials}
 \author{Yu-Heng Yu\\
@@ -184,6 +187,15 @@ The Energy Flow Polynomials (EFPs) are a set of jet substructure observables whi
 
 \section{Decomposing Traditional Jet Observables Using EFPs}
 By linearly combining the EFPs, one can get any IRC-safe jet observables. The coefficient of each EFP can be calculated as suggest in \cite{EFP}:
+\begin{quote}
+    For any arbitrary observable $O$, we use least-squares regression to find a suitable set of coefficients \textbf{w}*:
+    \begin{equation}
+        \label{eq:linregcoef}
+        \text{\textbf{w}* = }\argmin_{\text{\textbf{w}}} \left \{ \sum_{J\in \text{jets}}\left ( O(J)-\sum_{G \in \mathcal{G}}w_G\text{ EFP}_G(J) \right )^2 \right \}
+    \end{equation}
+    where $O(J)$ is the value of the observable and $\text{EFP}_G(J)$ the value of the EFP given by
+    multigraph $G$ on jet $J$.
+\end{quote}
 
 
 \clearpage
